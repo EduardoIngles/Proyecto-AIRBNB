@@ -20,7 +20,7 @@ conteoclas.drop(columns=["_id",""], inplace=True)
 
 dataset.dropna(inplace=True)
 
-# COGEMOS LOS DATOS NECESARIOS DE LA OTRA TABLA:
+# COGEMOS LOS DATOS NECESARIOS DE LA OTRA TABLA :
 
 df_final1 = dataset[["ID", "Beds", "Bedrooms", "Bathrooms",
                      "Accommodates", "Room Type", "City", "Price"]]
