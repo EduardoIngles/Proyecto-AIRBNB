@@ -1,19 +1,14 @@
 #################################### CÓDIGO 5 ########################################
 import folium
-from h11 import Data
-import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
-from yellowbrick.cluster import KElbowVisualizer
 from operator import itemgetter
 from sklearn.preprocessing import MinMaxScaler
-import numpy as np
 import pymongo
 import pandas as pd
 import os
 from dotenv import load_dotenv
 
 load_dotenv(
-    r'C:\Users\eduar\Desktop\Curso DATA\trabajo final\varsEnvi.env')
+    r'C:\Users\eduar\Desktop\DATA\Environ\varsEnvi.env')
 key = os.environ.get('KEY_MONGO')
 
 client = pymongo.MongoClient(f"mongodb+srv://admin:{key}@clusterairbnb.hkqbr.mongodb.net/")
@@ -30,8 +25,8 @@ dataset.drop(columns=["_id",""], inplace=True, errors="ignore")
 datos_kmeans.drop(columns=["_id",""], inplace=True, errors="ignore")
 
 # #IMPORT DE TABLAS MANUAL
-# dataset = pd.read_csv(r"C:\Users\eduar\Desktop\Curso DATA\trabajo final\dataset_new_proyecto_geo.csv")
-# datos_kmeans = pd.read_csv(r"C:\Users\eduar\Desktop\Curso DATA\trabajo final\Tabla_Mongo.csv")
+# dataset = pd.read_csv(r"dataset_new_proyecto_geo.csv")
+# datos_kmeans = pd.read_csv(r"Tabla_Mongo.csv")
 
 
 #LO USAMOS PARA SACAR LAS PONDERACIONES PARA REALIZAR ASIGNACIONES CON CIERTO PESO
@@ -180,8 +175,10 @@ def filtrado(clúster_asignado):
     filtrado_norm= data_norm_pd.loc[filtro,:].copy()
         
     
-    
     return filtrado_norm
+
+
+
 def selector_gustos(clúster_asignado,filtrado_data_normalizado):   
     
     if type(clúster_asignado) == int:    
