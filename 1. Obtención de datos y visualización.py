@@ -1,26 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.cluster import KMeans
-from wordcloud import WordCloud
-import string
-from IPython.display import Image
-from tqdm import tqdm
-import requests
-import json
-from bs4 import BeautifulSoup
-from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
-import numpy as np
-import math as m
-import folium
 import os
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
+
 load_dotenv(
-    r'C:\Users\eduar\Desktop\Curso DATA\trabajo final\varsEnvi.env')
+    r'C:\Users\eduar\Desktop\DATA\Environ\varsEnvi.env')
 
 KEY_MONGO = os.environ.get('KEY_MONGO')
 client = MongoClient(
@@ -31,7 +18,7 @@ dataset = pd.DataFrame(list(col.find()),index=None)
 
 # IMPORTAMOS EL DATASET:
 
-path = r"C:\Users\Lenovo\Documents\CURSO DATA SCIENCE - NEBULOVA\Archivos\PROYECTO AIRBNB\airbnb-listings.csv"
+path = r"C:\Users\eduar\Desktop\DATA\AIRBNB_Files\airbnb-listings.csv"
 dataset = pd.read_csv(path, sep=";")
 
 dataset_new = dataset.loc[:, ["ID",
@@ -60,13 +47,9 @@ dataset_new = dataset.loc[:, ["ID",
 
 # FILTRAMOS PARA QUEDARNOS SOLO CON ESPAÑA:
 
-dataset_new = dataset_new[dataset_new['Country'] == "Spain"]
+dataset_new = dataset_new[dataset_new['Country'] == "Spain"].copy()
 filtro = ["Madrid", "Barcelona"]
-dataset_new1 = dataset_new[dataset_new.City.isin(filtro)]
-
-dataset = dataset_new1
-
-dataset.info()
+dataset = dataset_new[dataset_new.City.isin(filtro)].copy()
 
 dataset.describe()
 
