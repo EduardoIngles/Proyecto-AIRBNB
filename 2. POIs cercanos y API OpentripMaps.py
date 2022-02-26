@@ -27,6 +27,7 @@ KEY_MONGO = os.environ.get('KEY_MONGO')
 client = MongoClient(
     f"mongodb+srv://admin:{KEY_MONGO}@clusterairbnb.hkqbr.mongodb.net/")
 
+#a
 col = client["proyectoairbnb"]["dataset_limpio1"]
 dataset = pd.DataFrame(list(col.find()))
 dataset.drop(columns="_id", inplace=True)
