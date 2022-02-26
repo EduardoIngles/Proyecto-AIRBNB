@@ -1,10 +1,10 @@
 # PROYECTO DE CREACIÓN DE UN SISTEMA DE RECOMENDACIÓN DE ALOJAMIENTO DE AIRBNB EN FUNCIÓN DE LOS GUSTOS DEL USUARIO
-El proyecto que hemos llevado a cabo se trata de una aplicación que nos recomienda un alojamiento de la web AirBNB en función de nuestros gustos o preferencias de viaje. Esta recomendación irá en base a varios factores, pero principalmente analiza la afinidad del alojamiento a las características de lo que busca el cliente, como el destino del viaje, tipo de alojamiento, habitaciones, etc... pero principalmente se sirve de datos de puntos de interés cercanos al mismo, tomando como referencia un radio de 500 metros a la redonda, pero que podría ampliarse de manera sencilla según los requerimientos.
+El proyecto que he llevado a cabo se trata de una aplicación que nos recomienda un alojamiento de la web AirBNB en función de nuestros gustos o preferencias de viaje. Esta recomendación irá en base a varios factores, pero principalmente analiza la afinidad del alojamiento a las características de lo que busca el cliente, como el destino del viaje, tipo de alojamiento, habitaciones, etc... pero principalmente se sirve de datos de puntos de interés cercanos al mismo, tomando como referencia un radio de 500 metros a la redonda, pero que podría ampliarse de manera sencilla según los requerimientos.
 En esta primera versión, hemos utilizado solo las ciudades de Madrid y Barcelona.
 
 ## FUENTES DE DATOS:
 
-Para la obtención de los datos hemos utilizado varias fuentes de datos que detallamos a continuación:
+Para la obtención de los datos se ha utilizado varias fuentes de datos que detallamos a continuación:
 
 1. La primera fuente de información utilizada fue la base de datos de OpenDataSoft: https://public.opendatasoft.com/explore/dataset/airbnb-listings/table/?disjunctive.host_verifications&disjunctive.amenities&disjunctive.features
 de la cual se puede descargar la información de listings AirBNB de numerosos países del mundo. En este caso nos interesaba quedarnos solo con España, y dentro de esta, con las ciudades de Madrid y Barcelona. De las columnas que lleva el dataset, nos hemos quedado con 22 columnas, que son las siguientes:
@@ -33,13 +33,13 @@ de la cual se puede descargar la información de listings AirBNB de numerosos pa
         - "Listing Url"
 
 2. La segunda fuente de datos utilizada, ha sido la web de OpenTripMaps. 
-https://opentripmap.io/ Aprovechando la columna "Geolocation" de la información obtenida en OpenDataSoft, hemos analizado la cercanía de cada alojamiento a los diferentes puntos de interes de cada ciudad, catalogando cada uno en función de los POI's cercanos. 
+https://opentripmap.io/ Aprovechando la columna "Geolocation" de la información obtenida en OpenDataSoft, se ha analizado la cercanía de cada alojamiento a los diferentes puntos de interes de cada ciudad, catalogando cada uno en función de los POI's cercanos. 
 Para ello, este código hace uso de la API de esta web con el objetivo de hacer una exploración de los diferentes puntos de interes, distinguiéndolos por su diversa tipología (historia, deportes, museos, restaurantes, monumentos...) en un radio de 500 metros a la redonda de cada uno de los alojamientos. 
 Este radio se ha establecido por cuestión de equilibrio entre funcionalidad y economizar recursos, pero es ampliable.
 
 ## Paso 1: Obtención de información y limpieza de datos:
 
-Al comienzo del proyecto, se recoge la tabla obtenida directamente desde OpenDataSoft y se extrae la información que necesitamos. Nos quedamos con las ciudades de Madrid y Barcelona, así como también nos quedamos solo con las columnas enumeradas en el punto anterior.
+Al comienzo del proyecto, se recoge la tabla obtenida directamente desde OpenDataSoft y se extrae la información que necesitamos. Nos quedamos con las ciudades de Madrid y Barcelona, así como también solo con las columnas enumeradas en el punto anterior.
 
 Luego se efectúa una limpieza de los valores nulos para las columnas objeto, así como para la columna de ratings. Una vez hecho, al quedar pocos valores nulos, desecharíamos las filas que tengan algún valor nulo.
 
