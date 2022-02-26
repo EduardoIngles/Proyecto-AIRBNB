@@ -1,33 +1,16 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.cluster import KMeans
-from wordcloud import WordCloud
-import string
-from IPython.display import Image
 from tqdm import tqdm
-import requests
-import json
-from bs4 import BeautifulSoup
-from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
-import numpy as np
-import math as m
-import folium
 import os
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
 load_dotenv(
-    r'C:\Users\eduar\Desktop\Curso DATA\trabajo final\varsEnvi.env')
+    r'C:\Users\eduar\Desktop\DATA\Environ\varsEnvi.env')
 
 KEY_MONGO = os.environ.get('KEY_MONGO')
 client = MongoClient(
     f"mongodb+srv://admin:{KEY_MONGO}@clusterairbnb.hkqbr.mongodb.net/")
 
-# path_dataset = r"C:\Users\Lenovo\Documents\CURSO DATA SCIENCE - NEBULOVA\Archivos\PROYECTO AIRBNB\PROYECTO EDU\dataset_limpio.csv"
-# path_conteoclas = r"C:\Users\Lenovo\Documents\CURSO DATA SCIENCE - NEBULOVA\Archivos\PROYECTO AIRBNB\conteo_de_clases10_02_2022.csv"
 col_dataset = client["proyectoairbnb"]["dataset_limpio1"]
 col_conteoclas = client["proyectoairbnb"]["conteo_clases"]
 dataset = pd.DataFrame(list(col_dataset.find()))
@@ -91,7 +74,7 @@ def mapeaColumna(columna):
     return columna, mapeo
 
 
-# mapeos_columnas = dict()
+mapeos_columnas = dict()
 for col in df_final1.columns:
     if df_final1.loc[:, col].dtype == object:
         nueva_columna, mapeo = mapeaColumna(df_final1.loc[:, col])
