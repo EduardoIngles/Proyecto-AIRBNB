@@ -1,9 +1,6 @@
-import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from yellowbrick.cluster import KElbowVisualizer
-from operator import itemgetter
 from sklearn.preprocessing import MinMaxScaler
-import numpy as np
 import pandas as pd
 import pymongo
 from dotenv import load_dotenv
@@ -11,7 +8,7 @@ import os
 
 
 load_dotenv(
-    r'C:\Users\eduar\Desktop\Curso DATA\trabajo final\varsEnvi.env')
+    r'C:\Users\eduar\Desktop\DATA\Environ\varsEnvi.env')
 key = os.environ.get('KEY_MONGO')
 
 
@@ -34,8 +31,7 @@ Data = pd.DataFrame(list(col.find()))
 Data_ID = Data.copy()
 
 #MANUAL
-# Data = pd.read_csv(r"C:\Users\eduar\Desktop\Curso DATA\trabajo final\TABLA_FULL.csv")
-# Data_ID = pd.read_csv(r"C:\Users\eduar\Desktop\Curso DATA\trabajo final\TABLA_FULL.csv")
+# Data = TABLA_FULL.csv")
 
 
 #OPERAREMOS EL KMEANS 1 CON :
